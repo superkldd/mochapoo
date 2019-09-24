@@ -1,4 +1,5 @@
 import discord
+import os
 import requests
 import asyncio
 from json import loads
@@ -28,6 +29,6 @@ async def on_ready():
             a = 0
         await asyncio.sleep(3)
 
-
-client.run('NjI2MDgzMzY5OTE4Mzk4NTA0.XYo8-g.4GM7HCQwZkbL90KuN7hf9dpx41s')
+access_token = os.environ["BOT_TOKEN"]
+client.run(access_token)
 

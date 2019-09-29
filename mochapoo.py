@@ -9,6 +9,25 @@ from json import loads
 
 
 client = discord.Client()
+embed = discord.Embed (title = '이곳을 눌러 바로 이동합니다.',
+                       url = 'https://twitch.tv/mochapoo/ ',
+                       description = "twitch/Mochapoo")
+embed.set_image(url="https://images-ext-2.discordapp.net/external/Xeik7csyPXMo8ofWCvUU0rWOOgeuCK6CxHr5QoMLc0U/https/static-cdn.jtvnw.net/jtv_user_pictures/a04570df-723c-42b3-9d48-c39d898a40ee-profile_image-300x300.png")
+
+embed2 = discord.Embed (title = '이곳을 눌러 바로 이동합니다.',
+                       url = 'https://twitch.tv/emongss/ ',
+                       description = "twitch/emongss")
+embed2.set_image(url="https://images-ext-2.discordapp.net/external/19Ri2692b34cz0HZAVA_coyTp1_Nq4em_4-O_7HOWlY/https/static-cdn.jtvnw.net/jtv_user_pictures/15f113ea-23b5-4558-9951-202f53402bb2-profile_image-300x300.png")
+
+embed3 = discord.Embed (title = '이곳을 눌러 바로 이동합니다.',
+                       url = 'https://twitch.tv/ssozung/ ',
+                       description = "twitch/ssozung")
+embed3.set_image(url="https://images-ext-2.discordapp.net/external/dcEu0N9v-UW7qIavkGZCIq7c7NJ0jyEXlGKAZTw_7wg/https/static-cdn.jtvnw.net/jtv_user_pictures/0263e1f3-5648-42f8-9329-f56f41541470-profile_image-300x300.png")
+
+embed4 = discord.Embed (title = '이곳을 눌러 바로 이동합니다.',
+                       url = 'https://twitch.tv/eunjin2/ ',
+                       description = "twitch/eunjin2")
+embed4.set_image(url="https://images-ext-2.discordapp.net/external/3O0orPGJdQ8yoFMJCqXr8NyY-B2F8YGiJjQhLDe7KH4/https/static-cdn.jtvnw.net/jtv_user_pictures/6f8ba857-ae18-4458-8ffb-b8197256e197-profile_image-300x300.png")
 
 @client.event
 async def on_ready():
@@ -25,7 +44,8 @@ async def on_ready():
         response = requests.get("https://api.twitch.tv/helix/streams?user_login=" + twitch, headers=headers)
         try:
             if loads(response.text)['data'][0]['type'] == 'live' and a == 0:
-                await channel.send("```" + name + " 님이 방송을 시작하였습니다.알로알로!!\n 방송 주소 : twitch.tv/mochapoo" + "```")
+                await channel.send(name + " 님이 방송을 시작하였습니다.알로알로!!")
+                await channel.send(embed=embed)
                 a = 1
         except:
             a = 0
@@ -41,13 +61,13 @@ async def on_message(message):
         await message.channel.send("```알로알로!!!```")   
         
     if message.content.startswith('!에몽언니'):
-        await message.channel.send("```에몽언니 트위치 주소 : twitch.tv/emongss/ ```") 
+        await message.channel.send(embed=embed2) 
         
     if message.content.startswith('!쏘정언니'):
-        await message.channel.send("```쏘정언니 트위치 주소 : twitch.tv/ssozung/ ```")
+        await message.channel.send(embed=embed3)
         
     if message.content.startswith('!은진언니'):
-        await message.channel.send("```은진언니 트위치 주소 : twitch.tv/eunjin2/ ```")
+        await message.channel.send(embed=embed4)
      
     if message.content.startswith('!명령어'):
         file = open("명령어.txt")
